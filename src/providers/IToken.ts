@@ -1,5 +1,5 @@
-import { IUserResponseDTO } from "../useCases/User/CreateUser/dto/IUserCreateDTO";
+import { LoginResponseDto } from "../useCases/Login/dto/login-response.dto";
 
 export interface IToken {
-    generateAccess(user: IUserResponseDTO): any
+    generateAccess(user: LoginResponseDto): any
 }
