@@ -1,9 +1,9 @@
-import { IUserResponseDTO } from "../../useCases/User/CreateUser/dto/IUserCreateDTO";
 import jwt from 'jsonwebtoken'
+import { LoginResponseDto } from '../../useCases/Login/dto/login-response.dto';
 import { IToken } from "../IToken";
 
 export class Token implements IToken {
-    generateAccess(user: IUserResponseDTO): string {
+    generateAccess(user: LoginResponseDto): string {
         const token = jwt.sign(
             {
                 id: user.id,

@@ -8,14 +8,14 @@ import { IRegisterUseCase } from "../IRegisterUseCase"
 export class RegisterUseCase implements IRegisterUseCase {
   private _repository: IRegisterRepository
   private _bcrypt: IBcrypt
-  constructor(usersRepository: IRegisterRepository, bcrypt: IBcrypt) {
-    this._repository = usersRepository
+  constructor(repository: IRegisterRepository, bcrypt: IBcrypt) {
+    this._repository = repository
     this._bcrypt = bcrypt
   }
 
   async register(data: RegisterRequestDto): Promise<RegisterResponseDto> {
-    const { nome, email, senha } = data
-    const newUser = new User(nome, email, this._bcrypt.crypt(senha))
+    const user = await RegisterRequestDto.from(data)
+    const newUser = new User(user.nome, user.email, this._bcrypt.crypt(user.senha))
     const register = await this._repository.register(newUser)
     return RegisterResponseDto.from(register)
   }
