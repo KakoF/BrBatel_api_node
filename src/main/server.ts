@@ -1,4 +1,5 @@
 const path = require('path')
+var cors = require('cors');
 require('dotenv').config({
   path: path.join(__dirname, `../../.env${process.argv[2]}`),
 })
@@ -8,7 +9,7 @@ import routes from './config/routes'
 import '../infra/database/connect'
 
 const app = express()
-
+app.use(cors());
 app.use(express.json())
 app.use('/api', routes)
 
