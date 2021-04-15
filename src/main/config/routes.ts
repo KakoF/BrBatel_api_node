@@ -28,8 +28,8 @@ router.delete('/company/:id', (request: Request, response: Response) => {
 router.get('/company/:id', (request: Request, response: Response) => {
   return getCompanyController.get(request, response)
 })
-router.put('/company/:id', (request: Request, response: Response) => {
-  return updateCompanyController.upadte(request, response)
+router.put('/company/:id', authMiddleware, (request: Request, response: Response) => {
+  return updateCompanyController.update(request, response)
 })
 
 router.get('/company/:page/:perPage', (request: Request, response: Response) => {

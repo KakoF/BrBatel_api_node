@@ -1,4 +1,5 @@
 export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
+    id: string
     nome: string
     userId: string
     cnpj: string
@@ -8,6 +9,7 @@ export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
     public static from(userId: string, dto: Partial<CompanyRequestDto>) {
         const it = new CompanyRequestDto();
         it.nome = dto.nome;
+        it.id = dto.id;
         it.cnpj = dto.cnpj;
         it.userId = userId;
         it.demanda = dto.demanda;

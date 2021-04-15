@@ -7,7 +7,7 @@ export class UpdateCompanyController {
     constructor(service: IUpdateCompanyUseCase) {
         this._service = service
     }
-    async upadte(req: Request, res: Response) {
+    async update(req: Request, res: Response) {
         try {
             const data = await this._service.update(req.userId, req.body.id, req.body)
             return res.json(data)
