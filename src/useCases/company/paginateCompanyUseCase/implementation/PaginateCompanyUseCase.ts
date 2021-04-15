@@ -7,7 +7,7 @@ export class PaginateCompanyUseCase implements IPaginateCompanyUseCase {
     constructor(repository: IPaginateCompanyRepository) {
         this._repository = repository
     }
-    async paginate(page: number, offset: number, perPage: number): Promise<any> {
-        return await this._repository.paginate(page, offset, perPage);
+    async paginate(page: number, perPage: number, keyword: string): Promise<any> {
+        return await this._repository.paginate(page, perPage, keyword);
     }
 }

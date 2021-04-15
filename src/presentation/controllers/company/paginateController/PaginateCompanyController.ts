@@ -8,7 +8,7 @@ export class PaginateCompanyController {
     }
     async paginate(req: Request, res: Response) {
         try {
-            const data = await this._service.paginate(parseInt(req.params.page), parseInt(req.params.offset), parseInt(req.params.perPage))
+            const data = await this._service.paginate(parseInt(req.params.page), parseInt(req.params.perPage), req.body.keyword)
             return res.json(data)
         } catch (error) {
             return res.status(400).json({

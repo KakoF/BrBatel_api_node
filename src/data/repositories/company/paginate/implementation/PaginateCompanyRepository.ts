@@ -1,12 +1,20 @@
-import { getRepository } from "typeorm"
+import { getRepository, Like } from "typeorm"
 import { Company } from "../../../../../domain/entities/Company"
 import { IPaginateCompanyRepository } from "../IPaginateCompanyRepository"
 
 export class PaginateCompanyRepository implements IPaginateCompanyRepository {
-    async paginate(page: number, offset: number, perPage: number): Promise<any> {
+    async paginate(page: number, perPage: number, keyword: string): Promise<any> {
+        keyword = keyword || ''
+        const jumpRegister = page * perPage
         const repository = getRepository(Company)
-        const paginationCompany = await repository.createQueryBuilder('user').paginate();
-        return paginationCompany
+        const [result, total] = await repository.findAndCount(
+            {
+                where: { nome: Like('%' + keyword + '%') }, order: { nome: "DESC" },
+                take: perPage,
+                skip: jumpRegister
+            }
+        )
+        return { result, total }
     }
 
 }

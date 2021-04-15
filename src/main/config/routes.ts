@@ -32,7 +32,7 @@ router.put('/company/:id', (request: Request, response: Response) => {
   return updateCompanyController.upadte(request, response)
 })
 
-router.get('/company/:page/:offset/:perPage', (request: Request, response: Response) => {
+router.get('/company/:page/:perPage', (request: Request, response: Response) => {
   return paginateCompanyController.paginate(request, response)
 })
 
