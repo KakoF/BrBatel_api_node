@@ -5,6 +5,7 @@ export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
     cnpj: string
     demanda: number
     faturamento_anual: number
+    sobre: string
 
     public static from(userId: string, dto: Partial<CompanyRequestDto>) {
         const it = new CompanyRequestDto();
@@ -14,6 +15,7 @@ export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
         it.userId = userId;
         it.demanda = dto.demanda;
         it.faturamento_anual = dto.faturamento_anual;
+        it.sobre = dto.sobre;
         const re = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;
         if (!it.nome) throw new Error('Nome é campo obrigatório')
         if (!it.cnpj) throw new Error('CNPJ é campo obrigatório')

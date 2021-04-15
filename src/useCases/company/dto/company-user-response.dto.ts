@@ -7,6 +7,7 @@ export class CompanyUserResponseDto implements Readonly<CompanyUserResponseDto> 
     cnpj: string;
     demanda: number;
     faturamento_anual: number;
+    sobre: string;
     createAt: Date;
     updateAt: Date;
     user: Object;
@@ -19,6 +20,7 @@ export class CompanyUserResponseDto implements Readonly<CompanyUserResponseDto> 
         response.cnpj = entity.cnpj
         response.demanda = entity.demanda
         response.faturamento_anual = entity.faturamento_anual
+        response.sobre = entity.sobre
         response.createAt = entity.createAt
         response.updateAt = entity.updateAt
         response.user = userP

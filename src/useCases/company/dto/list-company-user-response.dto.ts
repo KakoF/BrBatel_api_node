@@ -7,6 +7,7 @@ export class ListCompanyUserResponseDto implements Readonly<ListCompanyUserRespo
     cnpj: string;
     demanda: number;
     faturamento_anual: number;
+    sobre: string;
     createAt: Date;
     updateAt: Date;
     user: Object;
@@ -20,6 +21,7 @@ export class ListCompanyUserResponseDto implements Readonly<ListCompanyUserRespo
             response.cnpj = company.cnpj
             response.demanda = company.demanda
             response.faturamento_anual = company.faturamento_anual
+            response.sobre = company.sobre
             response.createAt = company.createAt
             response.updateAt = company.updateAt
             response.user = userP
