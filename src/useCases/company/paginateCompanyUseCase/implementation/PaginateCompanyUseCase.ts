@@ -1,5 +1,6 @@
 import { IPaginateCompanyRepository } from "../../../../data/repositories/company/paginate/IPaginateCompanyRepository";
 import { CompanyResponseDto } from "../../dto/company-response.dto";
+import { ListCompanyUserResponseDto } from "../../dto/list-company-user-response.dto";
 import { IPaginateCompanyUseCase } from "../IPaginateCompanyUseCase";
 
 export class PaginateCompanyUseCase implements IPaginateCompanyUseCase {
@@ -8,6 +9,9 @@ export class PaginateCompanyUseCase implements IPaginateCompanyUseCase {
         this._repository = repository
     }
     async paginate(page: number, perPage: number, keyword: string): Promise<any> {
-        return await this._repository.paginate(page, perPage, keyword);
+        const data = await this._repository.paginate(page, perPage, keyword);
+        const { result, total } = data;
+        const companies = ListCompanyUserResponseDto.from(result)
+        return { companies, total }
     }
 }

@@ -1,5 +1,5 @@
 import { IGetCompanyRepository } from "../../../../data/repositories/company/get/IGetCompanyRepository";
-import { CompanyResponseDto } from "../../dto/company-response.dto";
+import { CompanyUserResponseDto } from "../../dto/company-user-response.dto";
 import { IGetCompanyUseCase } from "../IGetCompanyUseCase";
 
 export class GetCompanyUseCase implements IGetCompanyUseCase {
@@ -7,8 +7,9 @@ export class GetCompanyUseCase implements IGetCompanyUseCase {
     constructor(repository: IGetCompanyRepository) {
         this._repository = repository
     }
-    async get(id: string): Promise<CompanyResponseDto> {
-        return await this._repository.get(id);
+    async get(id: string): Promise<CompanyUserResponseDto> {
+        const data = await this._repository.get(id);
+        return CompanyUserResponseDto.from(data)
     }
 
 }
