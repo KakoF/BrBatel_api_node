@@ -1,15 +1,12 @@
 import {
   Entity,
   Column,
-  BeforeInsert,
-  BeforeUpdate,
 } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
-import bcrypt from 'bcryptjs'
 import { BaseEntity } from './Base'
 
 @Entity('companies')
-export class User extends BaseEntity {
+export class Company extends BaseEntity {
 
   @Column()
   nome: string
@@ -17,10 +14,10 @@ export class User extends BaseEntity {
   @Column()
   cnpj: string
 
-  @Column("decimal", { precision: 5, scale: 2 })
+  @Column("decimal", { precision: 12, scale: 2 })
   demanda: number
 
-  @Column("decimal", { precision: 5, scale: 2 })
+  @Column("decimal", { precision: 12, scale: 2 })
   faturamento_anual: number
 
   constructor(nome: string, cnpj: string, demanda: number, faturamento_anual: number, createAt?: Date, updateAt?: Date, id?: string) {

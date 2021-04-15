@@ -1,6 +1,6 @@
-import { RegisterRepository } from "../../../data/repositories/Register/implementation/RegisterRepository"
+import { RegisterRepository } from "../../../data/repositories/register/implementation/RegisterRepository"
 import { Bcrypt } from "../../../providers/implementations/Bcrypt"
-import { RegisterUseCase } from "../../../useCases/Register/implementation/RegisterUseCase"
+import { RegisterUseCase } from "../../../useCases/register/implementation/RegisterUseCase"
 import { RegisterController } from "./RegisterController"
 
 const _repository = new RegisterRepository()

@@ -1,6 +1,12 @@
 import { Request, Response, Router } from 'express'
-import { loginController } from '../../presentation/controllers/Login'
-import { registerController } from '../../presentation/controllers/Register'
+import { createCompanyController } from '../../presentation/controllers/company/createController'
+import { deleteCompanyController } from '../../presentation/controllers/company/deleteController'
+import { getCompanyController } from '../../presentation/controllers/company/getController'
+import { paginateCompanyController } from '../../presentation/controllers/company/paginateController'
+import { readCompanyController } from '../../presentation/controllers/company/readController'
+import { updateCompanyController } from '../../presentation/controllers/company/updateController'
+import { loginController } from '../../presentation/controllers/login'
+import { registerController } from '../../presentation/controllers/register'
 import { authMiddleware } from '../middlewares/authMiddleware'
 
 const router = Router()
@@ -10,12 +16,24 @@ router.post('/login', (request: Request, response: Response) => {
 router.post('/register', (request: Request, response: Response) => {
   return registerController.register(request, response)
 })
-router.get('/auth', authMiddleware, (request: Request, response: Response) => {
-  return response.send('Autenticado')
+router.get('/company', (request: Request, response: Response) => {
+  return readCompanyController.read(request, response)
 })
-//creatUserController.store(request))
-/*router.get('/users', authMiddleware, UserController.index)
-router.post('/users', UserController.store)
-router.post('/auth', AuthController.authenticate)*/
+router.post('/company', (request: Request, response: Response) => {
+  return createCompanyController.create(request, response)
+})
+router.delete('/company/:id', (request: Request, response: Response) => {
+  return deleteCompanyController.delete(request, response)
+})
+router.get('/company/:id', (request: Request, response: Response) => {
+  return getCompanyController.get(request, response)
+})
+router.put('/company/:id', (request: Request, response: Response) => {
+  return updateCompanyController.upadte(request, response)
+})
+
+router.get('/company/:page/:offset/:perPage', (request: Request, response: Response) => {
+  return paginateCompanyController.paginate(request, response)
+})
 
 export default router

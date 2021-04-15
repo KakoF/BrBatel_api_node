@@ -1,4 +1,4 @@
-import { IRegisterRepository } from "../../../data/repositories/Register/IRegisterRepository"
+import { IRegisterRepository } from "../../../data/repositories/register/IRegisterRepository"
 import { User } from "../../../domain/entities/User"
 import { IBcrypt } from "../../../providers/IBcrypt"
 import { RegisterRequestDto } from "../dto/register-request.dto"

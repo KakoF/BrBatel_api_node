@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ILoginUseCase } from "../../../useCases/Login/ILoginUseCase";
+import { ILoginUseCase } from "../../../useCases/login/ILoginUseCase";
 
 export class LoginController {
     private _service: ILoginUseCase

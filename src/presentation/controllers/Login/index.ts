@@ -1,7 +1,7 @@
-import { LoginRepository } from "../../../data/repositories/Login/implementation/Login"
+import { LoginRepository } from "../../../data/repositories/login/implementation/Login"
 import { Bcrypt } from "../../../providers/implementations/Bcrypt"
 import { Token } from "../../../providers/implementations/Token"
-import { LoginUseCase } from "../../../useCases/Login/implementation/LoginUseCase"
+import { LoginUseCase } from "../../../useCases/login/implementation/LoginUseCase"
 import { LoginController } from "./LoginController"
 
 const _repository = new LoginRepository()

@@ -1,4 +1,4 @@
-import { ILoginRepository } from "../../../data/repositories/Login/ILogin"
+import { ILoginRepository } from "../../../data/repositories/login/ILogin"
 import { IBcrypt } from "../../../providers/IBcrypt"
 import { IToken } from "../../../providers/IToken"
 import { LoginRequestDto } from "../dto/login-request.dto"

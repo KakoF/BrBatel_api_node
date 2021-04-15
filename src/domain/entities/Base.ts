@@ -4,18 +4,19 @@ import { PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn, ObjectIdCol
 
 export abstract class BaseEntity {
     @PrimaryGeneratedColumn('uuid')
-    @ObjectIdColumn()
+    //@ObjectIdColumn()
     id: string;
 
     @CreateDateColumn({ type: 'timestamp' })
     createAt: Date;
 
-    @UpdateDateColumn({ type: 'timestamp' })
+    @UpdateDateColumn({ type: 'timestamp', nullable: true })
     updateAt: Date;
 
     @BeforeInsert()
     newEntity() {
         this.createAt = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000)
+        this.updateAt = null;
     }
 
     @BeforeUpdate()

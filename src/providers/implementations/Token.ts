@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { LoginResponseDto } from '../../useCases/Login/dto/login-response.dto';
+import { LoginResponseDto } from '../../useCases/login/dto/login-response.dto';
 import { IToken } from "../IToken";
 
 export class Token implements IToken {
