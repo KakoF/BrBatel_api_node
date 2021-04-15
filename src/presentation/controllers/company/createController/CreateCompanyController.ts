@@ -8,7 +8,7 @@ export class CreateCompanyController {
     }
     async create(req: Request, res: Response) {
         try {
-            const data = await this._service.create(req.body)
+            const data = await this._service.create(req.userId, req.body)
             return res.json(data)
         } catch (error) {
             return res.status(400).json({

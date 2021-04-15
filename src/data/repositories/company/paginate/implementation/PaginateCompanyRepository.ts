@@ -9,11 +9,13 @@ export class PaginateCompanyRepository implements IPaginateCompanyRepository {
         const repository = getRepository(Company)
         const [result, total] = await repository.findAndCount(
             {
+                relations: ["user"],
                 where: { nome: Like('%' + keyword + '%') }, order: { nome: "DESC" },
                 take: perPage,
                 skip: jumpRegister
-            }
+            },
         )
+
         return { result, total }
     }
 

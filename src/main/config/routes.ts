@@ -19,7 +19,7 @@ router.post('/register', (request: Request, response: Response) => {
 router.get('/company', (request: Request, response: Response) => {
   return readCompanyController.read(request, response)
 })
-router.post('/company', (request: Request, response: Response) => {
+router.post('/company', authMiddleware, (request: Request, response: Response) => {
   return createCompanyController.create(request, response)
 })
 router.delete('/company/:id', (request: Request, response: Response) => {

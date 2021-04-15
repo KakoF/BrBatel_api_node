@@ -1,13 +1,15 @@
 export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
     nome: string
+    userId: string
     cnpj: string
     demanda: number
     faturamento_anual: number
 
-    public static from(dto: Partial<CompanyRequestDto>) {
+    public static from(userId: string, dto: Partial<CompanyRequestDto>) {
         const it = new CompanyRequestDto();
         it.nome = dto.nome;
         it.cnpj = dto.cnpj;
+        it.userId = userId;
         it.demanda = dto.demanda;
         it.faturamento_anual = dto.faturamento_anual;
         const re = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;

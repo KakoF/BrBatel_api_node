@@ -1,9 +1,13 @@
 import {
   Entity,
   Column,
+  OneToOne,
+  JoinColumn,
+  ManyToOne,
 } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 import { BaseEntity } from './Base'
+import { User } from './User'
 
 @Entity('companies')
 export class Company extends BaseEntity {
@@ -20,10 +24,17 @@ export class Company extends BaseEntity {
   @Column("decimal", { precision: 12, scale: 2 })
   faturamento_anual: number
 
-  constructor(nome: string, cnpj: string, demanda: number, faturamento_anual: number, createAt?: Date, updateAt?: Date, id?: string) {
+  @ManyToOne(type => User, user => user.company) user: User;
+
+  @Column()
+  userId: string;
+
+
+  constructor(userId: string, nome: string, cnpj: string, demanda: number, faturamento_anual: number, createAt?: Date, updateAt?: Date, id?: string) {
     super()
     this.nome = nome
     this.cnpj = cnpj
+    this.userId = userId
     this.demanda = demanda
     this.faturamento_anual = faturamento_anual
     this.createAt = createAt

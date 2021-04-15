@@ -11,10 +11,10 @@ export class UpdateCompanyUseCase implements IUpdateCompanyUseCase {
         this._repository = repository
         this._getCompanyRepository = getCompanyRepository
     }
-    async update(id: string, data: CompanyRequestDto): Promise<CompanyResponseDto> {
+    async update(userId: string, id: string, data: CompanyRequestDto): Promise<CompanyResponseDto> {
         const pastCompany = await this._getCompanyRepository.get(id);
         const updateItem = { ...pastCompany, ...data };
-        const company = CompanyRequestDto.from(updateItem)
+        const company = CompanyRequestDto.from(userId, updateItem)
         return CompanyResponseDto.from(await this._repository.update(company))
     }
 

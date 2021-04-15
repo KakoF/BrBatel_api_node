@@ -1,11 +1,14 @@
+import { compare } from 'bcryptjs'
 import {
   Entity,
   Column,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 import { BaseEntity } from './Base'
+import { Company } from './Company'
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -18,6 +21,8 @@ export class User extends BaseEntity {
 
   @Column()
   senha: string
+
+  @OneToMany(type => Company, company => company.user) company: Company[];
 
   @BeforeInsert()
   newUser() {

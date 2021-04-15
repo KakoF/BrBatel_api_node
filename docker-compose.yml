@@ -13,14 +13,4 @@ services:
       - '5454:5432'
     expose:
       - '5454'
-  app:
-    container_name: app_node_solid
-    depends_on:
-      - postgre
-    build: .
-    ports:
-      - '3001:3335'
-    command: yarn dev
-    expose:
-      - '3001'
     #command: bash -c "yarn typeorm migration:run && yarn dev"

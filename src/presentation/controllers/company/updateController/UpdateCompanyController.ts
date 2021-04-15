@@ -9,7 +9,7 @@ export class UpdateCompanyController {
     }
     async upadte(req: Request, res: Response) {
         try {
-            const data = await this._service.update(req.body.id, req.body)
+            const data = await this._service.update(req.userId, req.body.id, req.body)
             return res.json(data)
         } catch (error) {
             return res.status(400).json({

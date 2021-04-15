@@ -10,9 +10,9 @@ export class CreateCompanyUseCase implements ICreateCompanyUseCase {
         this._repository = repository
     }
 
-    async create(data: CompanyRequestDto): Promise<CompanyResponseDto> {
-        const company = await CompanyRequestDto.from(data)
-        const newCompany = new Company(company.nome, company.cnpj, company.demanda, company.faturamento_anual)
+    async create(userId: string, data: CompanyRequestDto): Promise<CompanyResponseDto> {
+        const company = await CompanyRequestDto.from(userId, data)
+        const newCompany = new Company(company.userId, company.nome, company.cnpj, company.demanda, company.faturamento_anual)
         const register = await this._repository.create(newCompany)
         return CompanyResponseDto.from(register)
     }

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 interface tokenPayload {
-  id: String
+  id: string
   iat: Number
   exp: Number
 }

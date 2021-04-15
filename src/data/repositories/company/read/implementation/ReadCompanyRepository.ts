@@ -5,7 +5,7 @@ import { IReadCompanyRepository } from "../IReadCompanyRepository";
 export class ReadCompanyRepository implements IReadCompanyRepository {
     async read(): Promise<Company[]> {
         const repository = getRepository(Company)
-        const companies = await repository.find()
+        const companies = await repository.find({ relations: ["user"] })
         return companies
     }
 
