@@ -21,7 +21,7 @@ export class CompanyRequestDto implements Readonly<CompanyRequestDto> {
         if (!it.cnpj) throw new Error('CNPJ é campo obrigatório')
         if (!it.demanda) throw new Error('Demanda é campo obrigatório')
         if (!it.faturamento_anual) throw new Error('Faturamento anual é campo obrigatório')
-        if (!re.test(String(it.cnpj).toLowerCase())) throw new Error('CNPJ não é válido')
+        //if (!re.test(String(it.cnpj).toLowerCase())) throw new Error('CNPJ não é válido')
         return it;
     }
 

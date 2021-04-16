@@ -9,6 +9,7 @@ export class UserController {
     }
     async user(req: Request, res: Response) {
         try {
+            console.log('enotr')
             const data = await this._service.user(req.userId)
             return res.json(data)
         } catch (error) {
