@@ -23,13 +23,13 @@ router.get('/company', (request: Request, response: Response) => {
 router.post('/company', authMiddleware, (request: Request, response: Response) => {
   return createCompanyController.create(request, response)
 })
-router.delete('/company/:id', (request: Request, response: Response) => {
+router.delete('/company/:id', authMiddleware, (request: Request, response: Response) => {
   return deleteCompanyController.delete(request, response)
 })
 router.get('/company/:id', (request: Request, response: Response) => {
   return getCompanyController.get(request, response)
 })
-router.put('/company/:id', authMiddleware, (request: Request, response: Response) => {
+router.put('/company/:id', authMiddleware, authMiddleware, (request: Request, response: Response) => {
   return updateCompanyController.update(request, response)
 })
 router.get('/company/:page/:perPage', (request: Request, response: Response) => {

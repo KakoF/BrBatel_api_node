@@ -1,3 +1,3 @@
 export interface IDeleteCompanyUseCase {
-    delete(id: string): Promise<boolean>
+    delete(userId: string, id: string): Promise<boolean>
 }

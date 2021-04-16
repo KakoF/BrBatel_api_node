@@ -8,7 +8,7 @@ export class DeleteCompanyController {
     }
     async delete(req: Request, res: Response) {
         try {
-            const data = await this._service.delete(req.params.id)
+            const data = await this._service.delete(req.userId, req.params.id)
             return res.json(data)
         } catch (error) {
             return res.status(400).json({

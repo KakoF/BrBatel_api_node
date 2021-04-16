@@ -13,6 +13,8 @@ export class UpdateCompanyUseCase implements IUpdateCompanyUseCase {
     }
     async update(userId: string, id: string, data: CompanyRequestDto): Promise<CompanyResponseDto> {
         var pastCompany = await this._getCompanyRepository.get(id);
+        if (pastCompany.user.id != userId)
+            throw new Error('Operação não permitida')
         const updateItem = { ...pastCompany, ...data };
         const company = CompanyRequestDto.from(userId, updateItem)
         return CompanyResponseDto.from(await this._repository.update(company))
