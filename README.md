@@ -17,7 +17,7 @@ https://typeorm.io/#/
 https://www.youtube.com/watch?v=TjAXBLszCb0
 ```
 
-## Alguns comandos para lembra
+## Alguns comandos para lembrar
 
 ```bash
 Criar migration: yarn typeorm migration:create -n CreateUsersTable
